@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mayra Mijares - Data & Systems Architect. Technology Delivery Strategist." />
+  <title>Mayra Mijares | Data & Systems Architect</title>
+
+  <style>
+    :root {
+      --navy: #0F172A;
+      --navy-soft: #1E293B;
+      --fuchsia: #E11D8D;
+      --fuchsia-soft: #FCE7F3;
+      --gray: #64748B;
+      --light: #F8FAFC;
+      --border: #E2E8F0;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+    }
+
+    .logo span {
+      color: var(--fuchsia);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--navy-soft);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--fuchsia);
+    }
+
+    .language {
+      color: var(--gray);
+      font-weight: 700;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      padding: 12px 20px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--fuchsia);
+      color: white;
+      box-shadow: 0 14px 30px rgba(225, 29, 141, 0.22);
+    }
+
+    .button-secondary {
+      border-color: var(--border);
+      color: var(--navy);
+      background: white;
+    }
+
+    .hero {
+      padding: 72px 0 84px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(225, 29, 141, 0.12), transparent 62%);
+      top: 20px;
+      right: -160px;
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: var(--gray);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      background: white;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--fuchsia);
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 22px;
+    }
+
+    .role {
+      font-size: clamp(1.32rem, 2.3vw, 2rem);
+      color: var(--navy-soft);
+      font-weight: 650;
+      line-height: 1.25;
+      margin-bottom: 28px;
+    }
+
+    .hero-copy {
+      font-size: 1.16rem;
+      color: var(--navy-soft);
+      max-width: 680px;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy strong {
+      color: var(--navy);
+    }
+
+    .hero-copy.es {
+      color: var(--gray);
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .hero-meta {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .hero-meta a {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.16);
+      background: var(--light);
+      min-height: 560px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .photo-badge {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 22px;
+      padding: 16px 18px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    .photo-badge p:first-child {
+      font-weight: 850;
+      color: var(--navy);
+    }
+
+    .photo-badge p:last-child {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-soft {
+      background: var(--light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      color: var(--fuchsia);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin-bottom: 18px;
+    }
+
+    .section-header p,
+    .about-copy p {
+      color: var(--gray);
+      font-size: 1.05rem;
+      max-width: 760px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 5px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, var(--fuchsia));
+      opacity: 0.8;
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--fuchsia-soft);
+      color: var(--fuchsia);
+      margin-bottom: 22px;
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+
+    .card h3 {
+      font-size: 1.24rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      color: var(--gray);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .about-copy p + p {
+      margin-top: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      background: white;
+    }
+
+    .stat strong {
+      font-size: 2rem;
+      display: block;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy-soft);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 650;
+      font-size: 0.92rem;
+    }
+
+    .method {
+      background: var(--navy);
+      color: white;
+    }
+
+    .method .section-kicker {
+      color: #F9A8D4;
+    }
+
+    .method .section-header p {
+      color: #CBD5E1;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: 28px;
+      padding: 28px;
+    }
+
+    .step-number {
+      color: #F9A8D4;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      margin-bottom: 12px;
+      font-size: 1.18rem;
+    }
+
+    .step p {
+      color: #CBD5E1;
+    }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      background: linear-gradient(135deg, white, #FFF1F8);
+    }
+
+    .contact-box p {
+      color: var(--gray);
+      margin-top: 10px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: flex-end;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card {
+        min-height: auto;
+      }
+
+      .photo-card img {
+        min-height: auto;
+        max-height: 720px;
+      }
+
+      .cards,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 3.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">MAYRA MIJARES<span>•</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#expertise">Expertise</a>
+        <a href="#about">About</a>
+        <a href="#method">How I work</a>
+        <a href="#contact">Contact</a>
+        <span class="language">EN | ES</span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Personal Brand</div>
+          <h1>Mayra Mijares</h1>
+          <p class="role">Data & Systems Architect<br />Technology Delivery Strategist</p>
+
+          <p class="hero-copy">
+            I help organizations <strong>design reliable data platforms</strong>, integrate complex systems and deliver technology initiatives successfully.
+          </p>
+          <p class="hero-copy es">
+            Ayudo a organizaciones a <strong>diseñar plataformas de datos confiables</strong>, integrar sistemas complejos y ejecutar iniciativas tecnológicas con éxito.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:mmijaresh@gmail.com">Let's Talk</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/mmijaresh/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+
+          <div class="hero-meta">
+            <span>Caracas · Remote-ready</span>
+            <span>•</span>
+            <a href="mailto:mmijaresh@gmail.com">mmijaresh@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="mayra-mijares-photo.jpeg" alt="Mayra Mijares, Data & Systems Architect" />
+          <div class="photo-badge">
+            <p>20+ years in technology</p>
+            <p>Data · Integration · Delivery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise" class="section-soft">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Expertise</p>
+          <h2>Architecture, integration and delivery for real business systems.</h2>
+          <p>
+            A compact service offering focused on the areas where technical depth, business alignment and execution discipline meet.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">01</div>
+            <h3>Data Architecture</h3>
+            <p>
+              Design of scalable data platforms, data models, CDC strategies, pipelines and data flows for operational and analytical use cases.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">02</div>
+            <h3>Systems Integration</h3>
+            <p>
+              Design of reliable integration flows between systems using APIs, events, messaging, Kafka, Apache Camel and enterprise integration patterns.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">03</div>
+            <h3>Technology Delivery</h3>
+            <p>
+              Support in the execution of complex technology initiatives, aligning business needs, architecture decisions and technical teams.
+            </p>
+          </article>
+        </div>
+
+        <div class="tags" aria-label="Technical expertise">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">Apache Camel</span>
+          <span class="tag">CDC / Replication</span>
+          <span class="tag">Data Modeling</span>
+          <span class="tag">OpenShift</span>
+          <span class="tag">Argo CD</span>
+          <span class="tag">Azure</span>
+          <span class="tag">Jira</span>
+          <span class="tag">SAFe / Scrum</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <p class="section-kicker">About</p>
+          <h2>Senior technology profile for initiatives that need clarity, structure and execution.</h2>
+
+          <p>
+            I am a software engineering professional with more than 20 years of experience in technology, working at the intersection of data architecture, systems integration, DevOps culture and technology delivery.
+          </p>
+          <p>
+            My background combines enterprise software development, technical project management, agile governance, relational databases, cloud and hybrid environments, and distributed systems.
+          </p>
+          <p>
+            I naturally connect strategy and execution: translating business needs into scalable technical solutions and helping teams move from complexity to delivery.
+          </p>
+        </div>
+
+        <div>
+          <div class="stats">
+            <div class="stat">
+              <strong>20+</strong>
+              <span>years of experience in technology</span>
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              <span>core service lines: data, integration, delivery</span>
+            </div>
+            <div class="stat">
+              <strong>B2/C1</strong>
+              <span>English proficiency · Spanish native</span>
+            </div>
+            <div class="stat">
+              <strong>Remote</strong>
+              <span>available for international collaboration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="method">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">How I work</p>
+          <h2>From complexity to executable architecture.</h2>
+          <p>
+            My work is based on understanding the real problem, designing a practical solution and enabling execution with the right structure.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <p class="step-number">01</p>
+            <h3>Understand the problem</h3>
+            <p>I analyze business context, technical constraints, current systems and delivery risks before proposing solutions.</p>
+          </article>
+
+          <article class="step">
+            <p class="step-number">02</p>
+            <h3>Design the architecture</h3>
+            <p>I define reliable, sustainable and pragmatic architecture options aligned with business and operational needs.</p>
+          </article>
+
+          <article class="step">
+            <p class="step-number">03</p>
+            <h3>Enable delivery</h3>
+            <p>I help teams translate architecture into actionable work, governance, priorities and measurable execution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2>Let's talk about your project.</h2>
+            <p>
+              If you are working on a data, integration or technology delivery initiative, I would be happy to explore how I can help.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:mmijaresh@gmail.com">Email me</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/mmijaresh/" target="_blank" rel="noopener">Visit LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>© 2026 Mayra Mijares. All rights reserved.</span>
+      <span>Data & Systems Architect · Technology Delivery Strategist</span>
+    </div>
+  </footer>
+</body>
+</html>
